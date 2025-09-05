@@ -1,31 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Layout } from "./Pages/layout";
-import { MainPage } from "./Pages/MainPage";
-import { SearchPage } from "./Pages/SearchPage";
-import { GalleryPage } from "./Pages/GalleryPage";
-import { fetchBreeds } from "./ServerApi";
+import { Layout } from "./layout";
 
 export const router = createBrowserRouter([
-    {
-        path:"/",
-        element:<Layout/>,
-        children:[
-            {
-                path:"/",
-                element:<MainPage/>
-            },
-            {
-                path: "/search",
-                element: <SearchPage/>
-            },
-            {
-                path: "/gallery",
-                element: <GalleryPage/>,
-                loader: fetchBreeds,
-            }
-        ] 
-    },
-    {
-
-    }
-])
+  {
+    path: "/",
+    element: <Layout />,
+    children: [{
+        index: true,
+        element: <h1>HomePage</h1> ,
+    },{
+        path: "/catalog",
+        element:<h2>Catalog</h2>,
+    },{
+        path:"/product/:id",
+        element: <h2>product</h2>,
+    },{
+        path:"checkout",
+        element: <h2>CheckOut</h2>,
+    }],
+  },
+]);
